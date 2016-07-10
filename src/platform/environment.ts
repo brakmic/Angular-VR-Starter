@@ -1,8 +1,4 @@
-/**
- * @author: advarics GmbH
- */
 // Angular 2
-// rc2 workaround
 import { enableProdMode } from '@angular/core';
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 // Environment Providers

@@ -1,13 +1,3 @@
-/**
- * @author: advarics GmbH
- *
- * These are globally available services in any component or any other service
- */
-/**
- * @author: advarics GmbH
- *
- * These are globally available services in any component or any other service
- */
 /*
  * These are globally available services in any component or any other service
  */

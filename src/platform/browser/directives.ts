@@ -1,6 +1,4 @@
 /**
- * @author: advarics GmbH
- *
  * These are globally available directives in any template
  */
 

@@ -11,18 +11,18 @@ import { Component, Directive,
 // Routing
 import { ActivatedRoute, Route,
          Router, ROUTER_DIRECTIVES } from '@angular/router';
-// RxJS
+// RxJS (currently unused!)
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 
-const template = require('./simple-module.component.html');
+const template = require('./vr-module.component.html');
 
 @Directive({
   selector: 'vr-module'
 })
 export class VrModule {
-
+  // the HTML can be provided via `src` property
   @Input() private src: string;
 
   constructor(private router: Router,
@@ -59,11 +59,11 @@ export class VrModule {
   private setupScene() {
     const metadata = new ComponentMetadata({
         selector: 'dynamic-html',
-        template: template,
+        template: template
     });
     this.createComponentFactory(this.componentResolver, metadata)
       .then(factory => {
-        const injector = ReflectiveInjector.fromResolvedProviders([], 
+        const injector = ReflectiveInjector.fromResolvedProviders([],
                                           this.viewContainerRef.parentInjector);
         this.viewContainerRef.createComponent(factory, 0, injector, []);
       });

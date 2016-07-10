@@ -1,10 +1,9 @@
 // App
 export * from './components';
 
-import { Stage,
-         SimpleModule } from './components';
+import { Stage, VrModule } from './components';
 
 export const APP_COMPONENTS = [
   Stage,
-  SimpleModule
+  VrModule
 ];

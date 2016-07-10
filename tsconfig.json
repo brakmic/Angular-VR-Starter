@@ -29,7 +29,6 @@
   },
   "files": [
     "./src/app/components/app.component.ts",
-    "./src/app/components/app.loader.ts",
     "./src/app/components/app.routes.ts",
     "./src/app/components/index.ts",
     "./src/app/components/shared/index.ts",

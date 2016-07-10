@@ -28,13 +28,8 @@ const style = require('./app.component.scss');
   directives: [...ROUTER_DIRECTIVES],
   precompile: [Stage]
 })
-export class App implements OnInit, OnChanges, OnDestroy, AfterViewInit {
-  /**
-   * App constructor
-   * @param {Router}         private router     Default router
-   * @param {ActivatedRoute} private route      Current route
-   * @param {LogService}     private logService Logging service
-   */
+export class App {
+
   constructor(private router: Router,
               private route: ActivatedRoute) {
   }

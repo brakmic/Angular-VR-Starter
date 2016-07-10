@@ -4,8 +4,9 @@
  * @type {Component}
  */
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router, ROUTER_DIRECTIVES } from '@angular/router';
-// RxJS
+import { ActivatedRoute, Route,
+         Router, ROUTER_DIRECTIVES } from '@angular/router';
+// RxJS (not in use!)
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
@@ -13,21 +14,18 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/switchMap';
 // VR Module
 import { VrModule } from '../modules';
-// State Management with Redux
+// State Management with Redux (not in use!)
 import '@ngrx/core/add/operator/select';
-import * as _ from 'lodash';
 
 const template = require('./stage.component.html');
 const style = require('./stage.component.scss');
-const domready = require('domready');
 
 @Component({
   moduleId: module.id,
   selector: 'vr-stage',
   template: template,
   styles: [style],
-  directives: [ROUTER_DIRECTIVES, VrModule],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  directives: [ROUTER_DIRECTIVES, VrModule]
 })
 export class Stage {
   constructor(private router: Router,
