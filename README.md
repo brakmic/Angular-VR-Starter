@@ -37,4 +37,4 @@ based on the [article](http://blog.lacolaco.net/post/dynamic-component-creation-
 
 #### License 
 
-MIT
+[MIT](https://github.com/brakmic/Angular_VRDemo/blob/master/LICENSE)
