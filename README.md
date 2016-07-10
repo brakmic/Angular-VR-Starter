@@ -1,6 +1,6 @@
 #### VR-Demo-1
 
-![image](http://imageup.info/upload/big/2016/07/10/5782aeccc1e87.png)
+![image](http://imageup.info/upload/big/2016/07/10/5782b3b45b6e9.png)
 
 This is an [Angular 2](https://angular.io/)-based environment for building WebVR apps with Mozilla's [A-frame](https://aframe.io/).
 
