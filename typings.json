@@ -1,0 +1,16 @@
+{
+  "globalDependencies": {
+    "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
+    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
+    "crypto-js": "registry:dt/crypto-js#3.1.4+20160505170201",
+    "hammerjs": "registry:dt/hammerjs#2.0.4+20160622233604",
+    "jquery": "registry:dt/jquery#1.10.0+20160628074423",
+    "lodash": "registry:dt/lodash#3.10.0+20160619033623",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "source-map": "registry:dt/source-map#0.0.0+20160317120654",
+    "three": "registry:dt/three#0.0.0+20160621005955",
+    "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
+    "webgl-ext": "registry:dt/webgl-ext#0.0.0+20160316155526",
+    "webpack": "registry:dt/webpack#1.12.9+20160523035535"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <title><%= webpackConfig.metadata.title %></title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+  <meta name="msapplication-tap-highlight" content="no" />
+  <script src="<%= webpackConfig.metadata.aframe %>"></script>
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+  <!-- base url -->
+  <base href="<%= webpackConfig.metadata.baseUrl %>">
+
+</head>
+
+<body>
+<vr-app></vr-app>
+
+  <% if (webpackConfig.metadata.isDevServer) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/webpack-dev-server.js"></script>
+  <% } %>
+
+</body>
+</html>
