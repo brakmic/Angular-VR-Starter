@@ -31,11 +31,15 @@ The main component is located at *src/app/components/app.component.ts*. It loads
 The current RouterConfig of Stage.component is rather simple as it only points to the Stage itself. However, it should be no problem 
 to add more routes and/or additional parameters to manipulate modules. 
 
-##### Dynamic module loading
+##### Dynamic Component Loading
 
 There's a module called *vr-module* that contains the [HelloWorld-demo](https://aframe.io/examples/showcase/helloworld/) from the 
 A-Frame examples page. Unlike Stage.component this module is a pure Directive which dynamically instatiates a new Component. This piece of code is 
 based on the [article](http://blog.lacolaco.net/post/dynamic-component-creation-in-angular-2/) from [laco0416](https://twitter.com/laco0416).
+
+##### State Management
+
+I'm planning to implement state management with [@ngrx](https://github.com/ngrx).
 
 #### License 
 
