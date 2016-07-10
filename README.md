@@ -1,7 +1,6 @@
 #### VR-Demo-1
 
-This is an [Angular 2](https://angular.io/)-based environment for building WebVR apps. Currently it supports
-creation of such apps with Mozilla's [A-frame](https://aframe.io/).
+This is an [Angular 2](https://angular.io/)-based environment for building WebVR apps with Mozilla's [A-frame](https://aframe.io/).
 
 The build scripts are based on [Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) from [AngularClass](https://github.com/AngularClass). 
 
