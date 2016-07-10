@@ -1,6 +1,3 @@
-/**
- * @author: advarics GmbH
- */
 /*
  * Compile Tests written in ES6 before actual testing.
  */
