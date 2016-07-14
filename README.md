@@ -32,9 +32,7 @@ npm run start:hmr
 
 #### Application Structure 
 
-The main component is located at *src/app/components/app.component.ts*. It loads the **Wrapper** component from *shared*-subdir 
-
-which then instantiates the available VR-modules by utilizing the **VrModule** directive (also located under *shared*). 
+The main component is located at *src/app/components/app.component.ts*. It loads the **Wrapper** component from *shared*-subdir which then instantiates the available VR-modules by utilizing the **VrModule** directive (also located under *shared*). 
 
 ##### State Management
 
