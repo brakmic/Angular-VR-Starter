@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="<%= webpackConfig.metadata.title %>">
   <meta name="msapplication-tap-highlight" content="no" />
-  <script src="<%= webpackConfig.metadata.aframe %>"></script>
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
   <%= webpackConfig.htmlElements.headTags %>
@@ -16,16 +15,18 @@
 
   <!-- base url -->
   <base href="<%= webpackConfig.metadata.baseUrl %>">
-
+  <!--<script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>-->
+   <script src="<%= webpackConfig.metadata.aframe %>"></script>
 </head>
 
 <body>
+ 
 <vr-app></vr-app>
 
   <% if (webpackConfig.metadata.isDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-
+  
 </body>
 </html>

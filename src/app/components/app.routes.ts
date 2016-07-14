@@ -1,8 +1,17 @@
-import { STAGE_ROUTES } from './shared';
+import { Wrapper } from './shared';
 import { provideRouter, RouterConfig } from '@angular/router';
+/**
+ * All routes go towards Wrapper that prepares the stage for vr modules
+ * to be loaded. With route we provide also an ID of the selected module. 
+ * Check wrapper/wrapper.component.ts for more info on URL parameter handling.
+ */
+const ALL_ROUTES: RouterConfig = [
+  { path: '',
+        children: [
+          { path: '', component: Wrapper },
+          { path: ':area', component: Wrapper }
+        ]
+  }
+];
 
-export {
-  STAGE_ROUTES
-}
-
-export const APP_ROUTER_PROVIDERS = [provideRouter(STAGE_ROUTES, { enableTracing: false })];
+export const VR_ROUTER_PROVIDERS = [provideRouter(ALL_ROUTES, { enableTracing: false })];

@@ -24,7 +24,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   port: PORT,
   ENV: ENV,
   HMR: false,
-  urlPrefix: 'vrdemo'
+  urlPrefix: '/'
 });
 
 module.exports = webpackMerge(commonConfig, {
@@ -60,7 +60,7 @@ module.exports = webpackMerge(commonConfig, {
      */
     path: helpers.root('dist'),
 
-    publicPath: 'retailweb/',
+    publicPath: 'vrdemo/',
 
     /**
      * Specifies the name of each output file on disk.

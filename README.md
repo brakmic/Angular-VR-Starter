@@ -6,6 +6,12 @@ This is an [Angular 2](https://angular.io/)-based environment for building WebVR
 
 The build scripts are based on [Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) from [AngularClass](https://github.com/AngularClass). 
 
+[Live Demo](http://brakmic.com/demos/vrdemo/)
+
+Notice: the live demo contains graphics, SVGs and markups taken from the A-Frame homepage. 
+
+*All copyrights regarding these materials belong to Mozilla and/or other companies and groups (MozVR team etc.)*.
+
 #### Installation
 
 ```
@@ -39,7 +45,11 @@ based on the [article](http://blog.lacolaco.net/post/dynamic-component-creation-
 
 ##### State Management
 
-I'm planning to implement state management with [@ngrx](https://github.com/ngrx).
+The application state management is done via [@ngrx](https://github.com/ngrx/ngrx.github.io). 
+
+The currently available vr modules are located under *src/app/app.loader.ts*. 
+
+During the application start a service called `vr-module.service` registers all of the available modules by sending dispatch messages to the **@ngrx/store**. 
 
 #### License 
 

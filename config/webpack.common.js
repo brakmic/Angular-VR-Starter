@@ -6,7 +6,7 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
-var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -18,7 +18,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 const METADATA = {
   title: 'vr-demo1',
   urlPrefix: '',
-  baseUrl: '/vrdemo',
+  baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   aframe: 'vendor/aframe.min.js'
 };
@@ -83,8 +83,7 @@ module.exports = {
       'bows': helpers.root('node_modules/bows/bows.js'),
       'immutable': helpers.root('node_modules/immutable/dist/immutable.min.js'),
       'underscore': helpers.root('node_modules/underscore/underscore-min.js'),
-      'lodash': helpers.root('node_modules/lodash/index.js'),
-      'aframe': helpers.root('node_modules/aframe/build/aframe.js')
+      'lodash': helpers.root('node_modules/lodash/index.js')
     },
 
   },
@@ -124,7 +123,8 @@ module.exports = {
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/aframe/build/aframe.js'),
           helpers.root('node_modules/webvr-polyfill'),
-          helpers.root('node_modules/@ngrx')
+          helpers.root('node_modules/@ngrx'),
+          helpers.root('node_modules/aframe')
         ]
       }
 
@@ -147,7 +147,7 @@ module.exports = {
        */
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader'],
+        loaders: ['awesome-typescript-loader','angular2-template-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 

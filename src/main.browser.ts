@@ -3,11 +3,11 @@
  */
 import { bootstrap } from '@angular/platform-browser-dynamic';
 // // Redux Store
-// import { appStore } from './app/stores';
+import { appStore } from './app/stores';
 /*
 * Platform and Environment providers/directives/pipes
 */
-import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
+import { BROWSER_PROVIDERS } from './platform/browser';
 
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 
@@ -15,7 +15,11 @@ import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 * App Component
 * our top level component that holds all of our components
 */
-import { App, APP_COMPONENTS, APP_ROUTER_PROVIDERS } from './app';
+import { App,
+         VR_COMPONENTS,
+         VR_ROUTER_PROVIDERS,
+         VR_DIRECTIVES,
+         VR_PROVIDERS } from './app';
 
 /***********************************************************************
  * Bootstrap Angular app and inject
@@ -24,12 +28,13 @@ import { App, APP_COMPONENTS, APP_ROUTER_PROVIDERS } from './app';
 export function main(initialHmrState?: any): Promise<any> {
 
       return bootstrap(App, [
-      ...APP_COMPONENTS,
+      ...BROWSER_PROVIDERS,
       ...ENV_PROVIDERS,
-      ...DIRECTIVES,
-      ...PIPES,
-      ...PROVIDERS,
-      ...APP_ROUTER_PROVIDERS
+      ...VR_PROVIDERS,
+      ...VR_COMPONENTS,
+      ...VR_DIRECTIVES,
+      ...VR_ROUTER_PROVIDERS,
+      appStore
     ])
     .then(decorateComponentRef)
     .catch(err => console.error(err));

@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+}
+
+.row {
+  margin: 0!important;
+}
+
+.col {
+  margin: 0!important;
+}
+
+html, body {
+  min-height: 100%;
+  height:auto;
+  max-width: 100%;
+  //overflow-y: auto;
+  //overflow-x: hidden;
+
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+  .row {
+    margin: 0!important;
+    padding: 0!important;
+  }
+
+  .col {
+    margin: 0!important;
+    padding: 0!important;
+  }
+
+  .main-container {
+    overflow: hidden;
+  }
+
+  .three-dee-area {
+    // height: 180px;
+    margin: 2em;
+  }
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .three-dee-area {
+    height: 500px;
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 340px;
+    min-height: 350px;
+    max-height: 350px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    //overflow: auto;
+  }
+  .three-dee-area {
+    height: 650px;
+  }
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 500px;
+    min-height: 500px;
+    max-height: 500px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    //overflow: auto;
+  }
+  .three-dee-area {
+    height: 700px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 2000px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 500px;
+    min-height: 500px;
+    max-height: 500px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    //overflow: auto;
+  }
+  .three-dee-area {
+    height: 1000px;
+  }
+}
+
+.vr-module-area {
+  padding: .1em;
+  background-color: #0083E4;
+  color: white;
+  height: 100%;
+}
+
+.sidebar-block {
+  background-color: white;
+  min-height: 500px;
+}
+
+.main-container {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto -40px;
+
+}
+
+.three-dee-area {
+  margin-left: 0;
+  margin-right: 0;
+}

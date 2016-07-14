@@ -3,9 +3,6 @@
 
 require('script!vendor/jquery-2.1.4.js');
 
-// D3
-// require('d3');
-
 // CryptoJS
 require('script!vendor/cryptojs/rollups/sha512.js');
 

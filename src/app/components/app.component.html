@@ -1,3 +1,15 @@
-<div id="vr-app">
-  <router-outlet></router-outlet>
+<div class="container-fluid main-container">
+  <div class="row stage-area">
+    <div class="col col-lg-2 col-md-3sidebar-block">
+      <vr-list [modules]="availableModules | async" (vrModuleSelected)="onVrModuleSelected($event)"></vr-list>
+    </div>
+    <div class="col col-lg-10 col-md-9 three-dee-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
+ <footer class="footer pull-left">
+    <div class="container">
+        <p class="text-muted">{{activeVrModule?.name}}</p>
+      </div>
+  </footer>
