@@ -11,11 +11,9 @@ const vrModuleReducer: ActionReducer<IVrModule[]> = (state: IVrModule[] =
                                                     initialState, action: Action) => {
   switch (action.type) {
     case VR_MODULE_REMOVED:
-      _.remove(state, mod => mod.id === action.payload.id);
-      return state;
+      return _.filter(state, mod => mod.id === action.payload.id);
     case VR_MODULE_ADDED:
-      state = _.concat(state, action.payload);
-      return state;
+      return _.concat(state, action.payload);
     default:
       return state;
   }
