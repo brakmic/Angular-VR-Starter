@@ -32,7 +32,7 @@ npm run start:hmr
 
 #### Application Structure 
 
-At boot the [main component](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.component.ts) loads available vr modules. A simple [routing mechanism](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.routes.ts) instantiates the [Wrapper](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/wrapper/wrapper.component.ts) which utilizes the [VrModule Directive](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/directives/vr-module.directive.ts) to activate a selected vr module.
+The [main component](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.component.ts) loads available vr modules at boot. By using a simple [routing mechanism](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.routes.ts) the [Wrapper](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/wrapper/wrapper.component.ts) configures the [VrModule Directive](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/directives/vr-module.directive.ts) to activate a selected vr module.
 
 
 ##### State Management
