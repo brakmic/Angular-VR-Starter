@@ -32,7 +32,7 @@ npm run start:hmr
 
 #### Application Structure 
 
-The main component is located at [src/app/components/app.component.ts](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.component.ts). A simple [routing mechanism](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.routes.ts) instantiates the [Wrapper](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/wrapper/wrapper.component.ts which utilizes the [VrModule Directive](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/directives/vr-module.directive.ts) to load available VR modules. They get [activated](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/list/list.component.ts#L76) by using the menu on the left. 
+The main component is located at [src/app/components/app.component.ts](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.component.ts). A simple [routing mechanism](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.routes.ts) instantiates the [Wrapper](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/wrapper/wrapper.component.ts) which utilizes the [VrModule Directive](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/directives/vr-module.directive.ts) to load available VR modules. They get [activated](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/list/list.component.ts#L76) by using the menu on the left. 
 
 ##### State Management
 
