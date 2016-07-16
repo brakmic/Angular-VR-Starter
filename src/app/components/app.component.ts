@@ -25,10 +25,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { LogService, VrModuleService } from '../services';
 // Helpers 
 import { TaskHelper } from '../helpers';
+import * as _ from 'lodash';
 // State Management with Redux
 import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
-import * as _ from 'lodash';
 const template = require('./app.component.html');
 const normalize = require('normalize.css');
 const style = require('./app.component.scss');

@@ -21,6 +21,7 @@ import { VrModule } from '../directives';
 import { LogService, VrModuleService } from '../../../services';
 // Interfaces 
 import { IAppState, IVrModule, IVrModuleDescriptor } from '../../../interfaces';
+import * as _ from 'lodash';
 // State Management with Redux
 import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';

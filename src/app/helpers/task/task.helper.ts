@@ -7,7 +7,14 @@ import * as _ from 'lodash';
 export class TaskHelper {
 
  private tasks: ITask[] = [];
-
+ /**
+  * Creates an instance of TaskHelper.
+  * TaskHelper can be used to pre-register certain events to be executed before 
+  * starting some main task. For example, preloading styles and default settings 
+  * before starting the main application.
+  * 
+  * @param {LogService} logService
+  */
  constructor(private logService: LogService) {
 
  }

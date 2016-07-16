@@ -6,7 +6,9 @@ const VR_MODULE_REMOVED = 'VR_MODULE_REMOVED';
 const VR_MODULE_ADDED = 'VR_MODULE_ADDED';
 
 const initialState: IVrModule[] = [];
-
+/**
+ * VR Module reducer for managing the available VR modules
+ */
 const vrModuleReducer: ActionReducer<IVrModule[]> = (state: IVrModule[] =
                                                     initialState, action: Action) => {
   switch (action.type) {
