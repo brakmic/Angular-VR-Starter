@@ -34,7 +34,7 @@ export class VrModuleService extends Subject<IVrModule> {
   }
   /**
    * Registers a vr module
-   * @return {Observable<boolean>} Observable stream of booleans
+   * @return {Observable<IServiceMessage>} Observable stream of IServiceMessage instances
    */
     public registerModule(): Observable<IServiceMessage> {
       return this.asObservable().map(mod => {
@@ -57,7 +57,7 @@ export class VrModuleService extends Subject<IVrModule> {
     /**
      * Unregisters a vr module
      * 
-     * @returns {Observable<boolean>} Observable stream of booleans
+     * @returns {Observable<IServiceMessage>} Observable stream of IServiceMessage instances
      */
     public unregisterModule(): Observable<IServiceMessage> {
       return this.asObservable().map(mod => {

@@ -19,15 +19,12 @@ import { VrModuleType } from '../enums';
 import '@ngrx/core/add/operator/select';
 // RxJS
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 // Services 
 import { LogService, VrModuleService } from '../services';
 // Helpers 
 import { TaskHelper } from '../helpers';
 import * as _ from 'lodash';
-// State Management with Redux
-import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
 const template = require('./app.component.html');
 const normalize = require('normalize.css');

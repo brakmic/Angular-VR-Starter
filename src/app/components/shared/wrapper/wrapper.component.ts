@@ -13,7 +13,6 @@ import { ActivatedRoute, Route,
          Router, ROUTER_DIRECTIVES } from '@angular/router';
 // RxJS (currently unused!)
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 // VR Module 
 import { VrModule } from '../directives';
