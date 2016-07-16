@@ -32,13 +32,13 @@ npm run start:hmr
 
 #### Application Structure 
 
-The main component is located at *src/app/components/app.component.ts*. It loads the **Wrapper** component from *shared*-subdir which then instantiates the available VR-modules by utilizing the **VrModule** directive (also located under *shared*). 
+The main component is located at [src/app/components/app.component.ts](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.component.ts). It loads the [Wrapper](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/wrapper/wrapper.component.ts) component from *shared*-subdir which then instantiates the available VR-modules by utilizing the [VrModule](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/shared/directives/vr-module.directive.ts) directive. 
 
 ##### State Management
 
 The application state management is done via [@ngrx](https://github.com/ngrx/ngrx.github.io). 
 
-The currently available vr modules are located under *src/app/app.loader.ts*. 
+The currently available VR modules are located under [src/app/components/app.loader.ts](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/components/app.loader.ts). 
 
 During the application start a service called `vr-module.service` registers all of the available modules by sending dispatch messages to the **@ngrx/store**. 
 
