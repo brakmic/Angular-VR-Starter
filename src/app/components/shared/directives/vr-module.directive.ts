@@ -9,10 +9,6 @@ import { Component, Directive,
          ComponentResolver, ComponentMetadata,
          ComponentFactory, ReflectiveInjector } from '@angular/core';
 
-// RxJS (currently unused!)
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { Subscription } from 'rxjs/Subscription';
 // Services 
 import { LogService } from '../../../services';
 import * as _ from 'lodash';
@@ -95,6 +91,14 @@ export class VrModule {
         _.each(this.scripts, (script, idx) => this.appendScript(hostEl, script, idx));
       });
   }
+  /**
+   * Dynamically append a vr-module script 
+   * 
+   * @private
+   * @param {HTMLElement} host
+   * @param {string} data
+   * @param {number} index
+   */
   private appendScript(host: HTMLElement, data: string, index: number) {
     const script = document.createElement('script');
     script.type = 'text/javascript';
@@ -106,6 +110,15 @@ export class VrModule {
     host.appendChild(script);
     this.activeScripts.push(script); // memorize the script so we can remove it later
   }
+  /**
+   * Create an Angular2-based component factory. This is needed to create new 
+   * component instances. 
+   * 
+   * @private
+   * @param {ComponentResolver} resolver
+   * @param {ComponentMetadata} metadata
+   * @returns {Promise<ComponentFactory<any>>}
+   */
   private createComponentFactory(resolver: ComponentResolver, metadata: ComponentMetadata):
                                                                 Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent {};
