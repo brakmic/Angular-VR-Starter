@@ -1,0 +1,72 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "paths": {
+      "app/*": [ "app/*" ],
+      "apis/*": [ "app/apis/*" ],
+      "base/*": [ "app/base/*" ],
+      "components/*": [ "app/components/*" ],
+      "enums/*": [ "app/enums/*" ],
+      "handlers/*": [ "app/handlers/*" ],
+      "helpers/*": [ "app/helpers/*" ],
+      "interfaces/*": [ "app/interfaces/*" ],
+      "pipes/*": [ "app/pipes/*" ],
+      "providers/*": [ "app/providers/*" ],
+      "reducers/*": [ "app/reducers/*" ],
+      "resolvers/*": [ "app/resolvers/*" ],
+      "services/*": [ "app/services/*" ],
+      "stores/*": [ "app/stores/*" ],
+      "sw/*": [ "app/sw/*" ],
+      "themes/*": [ "app/themes/*" ],
+      "types/*": [ "app/types/*" ],
+      "workers/*": [ "app/workers/*" ],
+      "assets/*": [ "../assets/*" ],
+      "init/*": [ "../init/*" ],
+      "platform/*": [ "../platform/*" ],
+      "vendor/*": [ "../vendor/*" ]
+    },
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "typeRoots": [ "./node_modules/@types" ],
+    "types": [
+              "hammerjs",
+              "jasmine",
+              "node",
+              "lodash",
+              "jquery",
+              "source-map",
+              "uglify-js",
+              "webpack"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.spec.ts",
+    "src/**/*.e2e.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "angularCompilerOptions": {
+   "genDir": "./compiled",
+   "skipMetadataEmit": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
+}

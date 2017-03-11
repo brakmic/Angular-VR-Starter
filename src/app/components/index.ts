@@ -1,3 +1,1 @@
-export * from './shared';
-export * from './app.component';
-export * from './app.routes';
+export { AppModule } from './app.module';

@@ -1,0 +1,21 @@
+{
+  "server"       : "vr.server.com",
+  "baseUrl"      : "vr",
+  "protocol"     : "https",
+  "debug"        : false,
+  "language"     : "de",
+  "availableLanguages": [
+    "de",
+    "en",
+    "it",
+    "fr"
+  ],
+  "logon": {
+    "username": "user",
+    "password": "pwd"
+  },
+  "translations": "assets/i18n",
+  "traceRoutes": false,
+  "useHashRouting": false,
+  "useHttpExService": false
+}

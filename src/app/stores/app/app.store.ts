@@ -7,7 +7,6 @@ import { vrModuleReducer } from '../../reducers';
 class AppStore implements IAppState {
   public vrModule: IVrModule;
   constructor(private logService: LogService) {
-    this.logService.logEx(`Initialized`, 'AppStore');
   }
 }
 

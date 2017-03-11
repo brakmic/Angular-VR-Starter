@@ -1,44 +1,46 @@
+/**
+ * @author: @brakmic
+ */
+
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const path = require('path');
 
 /**
  * Webpack Plugins
  */
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
 /**
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig.metadata, {
-  host: 'localhost',
-  port: 3000,
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 3000;
+const TITLE = process.env.TITLE || 'vr.Web';
+const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
+  host: HOST,
+  port: PORT,
   ENV: ENV,
   HMR: HMR
 });
+
+const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge(commonConfig, {
+module.exports = function(options) {
 
-  /**
-   * Merged metadata from webpack.common.js for index.html
-   *
-   * See: (custom attribute)
-   */
-  metadata: METADATA,
-
-  /**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
-  debug: true,
+  return webpackMerge(commonConfig({ env: ENV }), {
 
   /**
    * Developer tool to enhance debugging
@@ -46,7 +48,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -76,19 +78,70 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
      */
-    sourceMapFilename: '[name].map',
+    sourceMapFilename: '[file].map',
 
     /** The filename of non-entry chunks as relative path
      * inside the output.path directory.
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
+
+    library: 'ac_[name]',
+    libraryTarget: 'var',
+
+    // pathinfo: true
+
+  },
+
+   module: {
+
+      rules: [
+
+        {
+         test: /\.ts$/,
+         use: [
+           {
+             loader: 'tslint-loader',
+             options: {
+               configFile: 'tslint.json'
+             }
+           }
+         ],
+         exclude: [/\.(spec|e2e)\.ts$/]
+       },
+      ]
 
   },
 
   plugins: [
+    /**
+    * Plugin LoaderOptionsPlugin (experimental)
+    *
+    * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+    */
+    new LoaderOptionsPlugin({
+      debug: true,
+      options: {
+        context: helpers.root('src'),
+        output: {
+          path: helpers.root('dist')
+        },
+        /**
+         * Static analysis linter for TypeScript advanced options configuration
+         * Description: An extensible linter for the TypeScript language.
+         *
+         * See: https://github.com/wbuchwalter/tslint-loader
+         */
+        tslint: {
+          emitErrors: false,
+          failOnHint: false,
+          fix: false,
+          resourcePath: helpers.root('src')
+        },
 
+      }
+    }),
     /**
      * Plugin: DefinePlugin
      * Description: Define free variables.
@@ -107,20 +160,57 @@ module.exports = webpackMerge(commonConfig, {
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
       }
-    })
+    }),
+
+    new DllBundlesPlugin({
+        bundles: {
+          polyfills: [
+            'core-js',
+            {
+              name: 'zone.js',
+              path: 'zone.js/dist/zone.js'
+            },
+            {
+              name: 'zone.js',
+              path: 'zone.js/dist/long-stack-trace-zone.js'
+            },
+          ],
+          vendor: [
+            '@angular/platform-browser',
+            '@angular/platform-browser-dynamic',
+            '@angular/core',
+            '@angular/common',
+            '@angular/forms',
+            '@angular/http',
+            '@angular/router',
+            '@angularclass/hmr',
+            'rxjs',
+            'lodash'
+          ]
+        },
+        dllDir: helpers.root('dll'),
+        webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
+          devtool: 'cheap-module-source-map',
+          plugins: []
+        })
+      }),
+
+       /**
+       * Plugin: AddAssetHtmlPlugin
+       * Description: Adds the given JS or CSS file to the files
+       * Webpack knows about, and put it into the list of assets
+       * html-webpack-plugin injects into the generated html.
+       *
+       * See: https://github.com/SimenB/add-asset-html-webpack-plugin
+       */
+      new AddAssetHtmlPlugin([
+        { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
+        { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
+      ]),
+
+
   ],
 
-  /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
 
   /**
    * Webpack Development Server configuration
@@ -131,26 +221,23 @@ module.exports = webpackMerge(commonConfig, {
    * See: https://webpack.github.io/docs/webpack-dev-server.html
    */
   devServer: {
-    quiet: false,
-    stats: { colors: true },
     port: METADATA.port,
     host: METADATA.host,
     historyApiFallback: true,
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    },
-    outputPath: helpers.root('dist')
+    }
   },
 
-  /*
+    /*
    * Include polyfills or mocks for various node stuff
    * Description: Node configuration
    *
    * See: https://webpack.github.io/docs/configuration.html#node
    */
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     process: true,
     module: false,
@@ -158,4 +245,7 @@ module.exports = webpackMerge(commonConfig, {
     setImmediate: false
   }
 
-});
+ });
+
+};
+

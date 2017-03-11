@@ -1,10 +1,10 @@
 // speed up the initial styles loading
-require('../themes/initial.scss');
+require('app/themes/initial.scss');
 
 // Interfaces
-import { IAppState, IVrModule } from '../interfaces';
+import { IAppState, IVrModule } from 'app/interfaces';
 // Enums 
-import { VrModuleType } from '../enums';
+import { VrModuleType } from 'app/enums';
 
 const hello = <IVrModule>{
               id: '001',

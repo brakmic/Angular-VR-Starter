@@ -1,5 +1,7 @@
-<ul class="list-group vr-list">
-    <li class="list-group-item" *ngFor="let module of modules; let i = index">
-        <div id="{{module?.name}}" class="module-entry">{{ module?.name }}</div>
+<ul class="list-group vrlist">
+    <li *ngFor="let module of modules; let i = index">
+        <button type="button" id="{{module?.name}}" 
+                              class="list-group-item" 
+                              >{{ module?.name }}</button>
     </li>
 </ul>

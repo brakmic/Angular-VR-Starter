@@ -1,1 +1,1 @@
-export { Wrapper } from './wrapper.component';
+export { VrWrapperModule } from './wrapper.module';

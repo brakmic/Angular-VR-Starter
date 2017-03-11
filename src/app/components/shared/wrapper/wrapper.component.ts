@@ -1,40 +1,39 @@
-import { Component, Directive,
-         ElementRef,
-         Input, OnChanges,
-         SimpleChange,
-         DoCheck, OnInit, OnDestroy,
-         AfterContentChecked, provide,
-         ChangeDetectionStrategy, ChangeDetectorRef,
-         ViewChild, ViewContainerRef,
-         ComponentResolver, ComponentMetadata,
-         ComponentFactory, ReflectiveInjector, Injector } from '@angular/core';
+import {
+  Component, Directive,
+  OnChanges,
+  SimpleChange, AfterViewInit,
+  OnInit, OnDestroy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  ViewEncapsulation
+} from '@angular/core';
 // Routing
-import { ActivatedRoute, Route,
-         Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 // RxJS (currently unused!)
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// VR Module 
-import { VrModule } from '../directives';
 // Services 
-import { LogService, VrModuleService } from '../../../services';
+import { LogService, VrModuleService } from 'app/services';
 // Interfaces 
-import { IAppState, IVrModule, IVrModuleDescriptor } from '../../../interfaces';
+import { IAppState, IVrModule, IVrModuleDescriptor } from 'app/interfaces';
 import * as _ from 'lodash';
 // State Management with Redux
 import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
-const template = require('./wrapper.component.html');
-const style = require('./wrapper.component.scss');
 
 @Component({
   selector: 'vr-wrapper',
-  template: template,
-  directives: [VrModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './wrapper.component.html',
+  styleUrls: [
+    './wrapper.component.scss'
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated
 })
-export class Wrapper {
-  private src: string;
+export class VrWrapperComponent implements OnInit,
+                                           OnDestroy,
+                                           OnChanges,
+                                           AfterViewInit {
+  public dynamicComponent: any = undefined;
   private modules: Observable<IVrModule[]>;
   private availableModules: IVrModule[] = [];
   private vrScripts: string[] = [];
@@ -47,11 +46,7 @@ export class Wrapper {
    * @param {Router} router
    * @param {ActivatedRoute} route
    * @param {ChangeDetectorRef} changeDetectorRef
-   * @param {ViewContainerRef} viewContainerRef
-   * @param {ComponentResolver} componentResolver
-   * @param {Injector} injector
    * @param {LogService} logService
-   * @param {VrModuleService} vrModuleService
    * @param {Store<IAppState>} store
    */
   constructor(private router: Router,
@@ -70,23 +65,30 @@ export class Wrapper {
   }
   public ngOnChanges(changes: any) {
   }
+  public onDynamicEvent($event: any) {
+    this.logService.logJson($event);  
+  }
   private initSubscriptions() {
-   this.modules = <Observable<IVrModule[]>>this.store.select('vrModule');
-   // retrieve the current app state regarding available vr modules
-   this.modulesSubscription = this.modules.subscribe(mods => {
-     this.availableModules = mods;
-   });
-   // Each time the route changes take the ID and instantiate the appropriate
-   // vr module.
-   // If the module contains a script-array load them too.
-   // Check shared/directives/vr-module.directive.ts for more info regarding 
-   // dynamic instantiation of vr modules.
-   this.routeSubscription = this.route.params.subscribe(params => {
+    this.modules = <Observable<IVrModule[]>>this.store.select('vrModule');
+    // retrieve the current app state regarding available vr modules
+    this.modulesSubscription = this.modules.subscribe((mods) => {
+      this.availableModules = mods;
+    });
+    // Each time the route changes take the ID and instantiate the appropriate
+    // vr element.
+    // If the element contains a script-array load them too.
+    // Check shared/directives/vr-element.directive.ts for more info regarding 
+    // dynamic instantiation of vr elements.
+    this.routeSubscription = this.route.params.subscribe((params) => {
       const id = params['id'];
-      const mod = _.find(this.availableModules, _mod => _mod.id === id);
-      this.src = mod ? mod.markup : undefined;
-      this.vrScripts = mod ? mod.scripts : [];
-      this.changeDetectorRef.markForCheck();
+      const mod = _.find(this.availableModules, (m) => m.id === id);
+      if (!_.isNil(mod)) {
+        this.dynamicComponent = {
+          html: mod ? mod.markup : undefined,
+          scripts: mod ? mod.scripts : []
+        };
+        this.changeDetectorRef.markForCheck();
+      }
     });
   }
   private destroySubscriptions() {

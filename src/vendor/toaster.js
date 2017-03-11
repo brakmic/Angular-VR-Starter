@@ -11,7 +11,7 @@ export default class Toaster {
   getInstance(config){
     let message = this.message;
     let blinkInterval = config ? config.blinkInterval : 1500;
-    let toaster = $(`<div id="adv-toaster"><h3><span id="toast-message" class="blink_me">${this.message}</span></h3></div>`);
+    let toaster = $(`<div id="vr-toaster"><h3><span id="toast-message" class="blink_me">${this.message}</span></h3></div>`);
     toaster.css(config ? config : {
       border: 'solid',
       display: 'block',

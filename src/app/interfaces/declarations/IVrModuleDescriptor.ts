@@ -1,4 +1,4 @@
-import { VrModuleType } from '../../enums';
+import { VrModuleType } from 'app/enums';
 
 export interface IVrModuleDescriptor {
     id: string;

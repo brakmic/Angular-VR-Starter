@@ -6,18 +6,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-// State Management with Redux
-import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
 // VR Module Interfaces
-import { VrModuleType } from '../../enums';
+import { VrModuleType } from 'app/enums';
 import { IAppState, IVrModule,
-         IVrModuleDescriptor, IServiceMessage } from '../../interfaces';
-import { LogService } from '../log';
+         IVrModuleDescriptor, IServiceMessage } from 'app/interfaces';
+import { VR_MODULE_ADDED, VR_MODULE_REMOVED } from 'app/reducers';
+import { LogService } from 'app/services';
 import * as _ from 'lodash';
-import { VR_MODULE_ADDED, VR_MODULE_REMOVED } from '../../reducers';
 /**
  * Service for managing vr modules 
  * 
@@ -37,7 +33,7 @@ export class VrModuleService extends Subject<IVrModule> {
    * @return {Observable<IServiceMessage>} Observable stream of IServiceMessage instances
    */
     public registerModule(): Observable<IServiceMessage> {
-      return this.asObservable().map(mod => {
+      return this.asObservable().map((mod) => {
         if (!_.isNil(mod) &&
             !_.isNil(mod.id) &&
             !_.isNil(mod.name)) {
@@ -60,7 +56,7 @@ export class VrModuleService extends Subject<IVrModule> {
      * @returns {Observable<IServiceMessage>} Observable stream of IServiceMessage instances
      */
     public unregisterModule(): Observable<IServiceMessage> {
-      return this.asObservable().map(mod => {
+      return this.asObservable().map((mod) => {
         if (!_.isNil(mod) &&
             !_.isNil(mod.id)) {
             this.store.dispatch( { type: VR_MODULE_REMOVED, payload: mod });

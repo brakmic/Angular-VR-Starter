@@ -1,47 +1,42 @@
 import { Component, AfterViewInit,
          OnChanges, OnInit, Output,
-         EventEmitter, provide, OpaqueToken,
+         EventEmitter, OpaqueToken,
          ChangeDetectionStrategy, ChangeDetectorRef,
-         OnDestroy } from '@angular/core';
+         OnDestroy, ViewEncapsulation } from '@angular/core';
 
-import { ActivatedRoute, Router,
-         ROUTER_DIRECTIVES } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { predefinedModules } from './app.loader';
-// Directives
-import { VrList, VrModule,
-         Wrapper } from './shared';
 // Interfaces
-import { IAppState, IVrModule, ITask } from '../interfaces';
+import { IAppState, IVrModule, ITask } from 'app/interfaces';
 // Enums 
-import { VrModuleType } from '../enums';
+import { VrModuleType } from 'app/enums';
 // State Management with Redux
 import '@ngrx/core/add/operator/select';
 // RxJS
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 // Services 
-import { LogService, VrModuleService } from '../services';
+import { LogService, VrModuleService } from 'app/services';
 // Helpers 
-import { TaskHelper } from '../helpers';
+import { TaskHelper } from 'app/helpers';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
-const template = require('./app.component.html');
-const normalize = require('normalize.css');
-const style = require('./app.component.scss');
-import { VR_MODULE_ADDED, VR_MODULE_REMOVED } from '../reducers';
+import { VR_MODULE_ADDED, VR_MODULE_REMOVED } from 'app/reducers';
 
 @Component({
   selector: 'vr-app',
-  template: template,
-  styles: [normalize, style],
-  directives: [...ROUTER_DIRECTIVES,
-                  VrModule, VrList,
-                  Wrapper],
-  precompile: [VrList, Wrapper],
-  changeDetection: ChangeDetectionStrategy.Default
+  templateUrl: './app.component.html',
+  styleUrls: [
+    './app.component.scss'
+  ],
+  changeDetection: ChangeDetectionStrategy.Default,
+  encapsulation: ViewEncapsulation.Emulated
 })
-export class App {
+export class AppComponent implements OnInit,
+                            OnDestroy,
+                            OnChanges,
+                            AfterViewInit {
   private routeSubscription: Subscription;
   private moduleSubscription: Subscription;
   private availableModules: Observable<IVrModule[]>;
@@ -52,7 +47,7 @@ export class App {
    * 
    * @param {Router} router
    * @param {ActivatedRoute} route
-   * @param {ChangeDetectorRef} changeDetectorRef
+   * @param {ChangeDetectorRef} cd
    * @param {LogService} logService
    * @param {VrModuleService} vrModuleService
    * @param {Store<IAppState>} store
@@ -60,7 +55,7 @@ export class App {
    */
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private changeDetectorRef: ChangeDetectorRef,
+              private cd: ChangeDetectorRef,
               private logService: LogService,
               private vrModuleService: VrModuleService,
               private store: Store<IAppState>,
@@ -71,7 +66,7 @@ export class App {
    */
   public ngOnInit() {
     this.logService.logEx(`Init`, 'App');
-    this.availableModules = <Observable<IVrModule[]>>this.store.select('vrModule');
+    this.availableModules = <Observable<IVrModule[]>> this.store.select('vrModule');
     this.initSubscriptions();
     this.registerVrModules(predefinedModules);
   }
@@ -87,10 +82,10 @@ export class App {
   }
 
   private initSubscriptions() {
-    this.routeSubscription = this.route.params.subscribe(data => {
+    this.routeSubscription = this.route.params.subscribe((data) => {
       this.logService.logJson(data, 'App');
     });
-    this.moduleSubscription = this.vrModuleService.registerModule().subscribe(message => {
+    this.moduleSubscription = this.vrModuleService.registerModule().subscribe((message) => {
       this.logService.logEx(message.content, 'App');
     });
   }

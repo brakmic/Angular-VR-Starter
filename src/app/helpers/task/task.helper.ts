@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { LogService } from '../../services';
-import { ITask } from '../../interfaces';
+import { LogService } from 'app/services';
+import { ITask } from 'app/interfaces';
 import * as _ from 'lodash';
 
 @Injectable()
 export class TaskHelper {
-
  private tasks: ITask[] = [];
  /**
   * Creates an instance of TaskHelper.
@@ -38,11 +37,11 @@ export class TaskHelper {
 
   private executeTasks(done: Function) {
     setTimeout(() => {
-      const callables = _.map(this.tasks, tsk => {
+      const callables = _.map(this.tasks, (tsk) => {
         this.logService.logEx(`Getting task ${tsk.name}`, 'TaskHelper');
         return tsk.logic;
       });
-      Promise.all(callables).then(all => {
+      Promise.all(callables).then((all) => {
         done.call(undefined, all);
       }).catch((error) => {
         this.logService.logEx(error, 'TaskHelper');

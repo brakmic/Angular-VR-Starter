@@ -1,1 +1,1 @@
-export { VrList } from './list.component';
+export { VrListModule } from './list.module';

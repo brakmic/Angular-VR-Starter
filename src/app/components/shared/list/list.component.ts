@@ -1,23 +1,30 @@
 import { Component, AfterViewInit,
          OnChanges, OnInit, Output, Input,
-         EventEmitter, provide, OpaqueToken,
+         EventEmitter, OpaqueToken,
          ChangeDetectionStrategy, ChangeDetectorRef,
-         OnDestroy } from '@angular/core';
+         OnDestroy, ViewEncapsulation } from '@angular/core';
 // VR Module Interfaces
-import { IVrModule } from '../../../interfaces';
+import { IVrModule } from 'app/interfaces';
 // Services
-import { LogService } from '../../../services';
+import { LogService } from 'app/services';
 import * as _ from 'lodash';
-const template = require('./list.component.html');
-const style = require('./list.component.scss');
+// Hammjer.js
+import 'hammerjs';
 const domready = require('domready');
 
 @Component({
   selector: 'vr-list',
-  template: template,
-  styles: [style]
+  templateUrl: './list.component.html',
+  styleUrls: [
+    './list.component.scss'
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.Emulated
 })
-export class VrList implements OnInit {
+export class VrListComponent implements OnInit,
+                                        OnDestroy,
+                                        OnChanges,
+                                        AfterViewInit {
   @Input() public modules: IVrModule[];
   @Output() public vrModuleSelected = new EventEmitter(true);
   private hammerElements: HammerManager[] = [];
@@ -70,12 +77,13 @@ export class VrList implements OnInit {
         if (!_.isNil(elem)) {
           const entry = new Hammer(elem);
           this.hammerElements.push(entry);
-          entry.on('tap press', ev => {
+          entry.on('tap press', (ev) => {
+            ev.preventDefault();
             let name = ev.target.textContent;
             let item = ev.target;
             this.entryClicked({ sender: 'List',
                                     module: m,
-                                    item: item,
+                                    item,
                                     original: ev
                                   });
           });

@@ -1,18 +1,28 @@
-var path = require('path');
+/**
+ * @author: @brakmic
+ */
+
+const path = require('path');
+
+const EVENT = process.env.npm_lifecycle_event || '';
 
 // Helper functions
-var _root = path.resolve(__dirname, '..');
-
-console.log('root directory:', root());
+const _root = path.resolve(__dirname, '..');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
 }
 
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [_root].concat(args));
+function hasNpmFlag(flag) {
+  return EVENT.includes(flag);
 }
+
+// function root(args) {
+//   args = Array.prototype.slice.call(arguments, 0);
+//   return path.join.apply(path, [_root].concat(args));
+// }
+
+const root = path.join.bind(path, _root);
 
 function rootNode(args) {
   args = Array.prototype.slice.call(arguments, 0);
@@ -22,6 +32,13 @@ function rootNode(args) {
 function getAbsolutePath(relativePath) {
   var dir = path.dirname(module.parent.filename);
   return path.join(dir, relativePath);
+}
+
+function checkNodeImport(context, request, cb) {
+  if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
+    cb(null, 'commonjs ' + request); return;
+  }
+  cb();
 }
 
 function prependExt(extensions, args) {
@@ -67,6 +84,7 @@ function isWebpackDevServer() {
 
 exports.reverse = reverse;
 exports.hasProcessFlag = hasProcessFlag;
+exports.hasNpmFlag = hasNpmFlag;
 exports.root = root;
 exports.rootNode = rootNode;
 exports.prependExt = prependExt;
@@ -74,3 +92,4 @@ exports.prepend = prependExt;
 exports.packageSort = packageSort;
 exports.getAbsolutePath = getAbsolutePath;
 exports.isWebpackDevServer = isWebpackDevServer;
+exports.checkNodeImport = checkNodeImport;
