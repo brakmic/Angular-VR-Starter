@@ -149,7 +149,7 @@
     "node": ">= 4.2.1",
     "npm": ">= 3"
   },
-  "license": "Commercial",
+  "license": "MIT",
   "main": "index.js",
   "name": "vrweb",
   "private": true,
