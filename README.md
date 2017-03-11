@@ -6,7 +6,7 @@ This is an [Angular 2](https://angular.io/)-based environment for building WebVR
 
 Use [Firefox Nightly](https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly) to view these pages.
 
-**Notice**: the live demo contains graphics, SVGs and markups taken from the A-Frame homepage. 
+**Notice**: this demo contains graphics, SVGs and markups taken from the A-Frame homepage. 
 
 *All copyrights regarding these materials belong to Mozilla and/or other companies and groups (MozVR team etc.)*.
 
