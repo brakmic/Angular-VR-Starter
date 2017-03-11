@@ -13,7 +13,13 @@ This is an [Angular 2](https://angular.io/)-based environment for building WebVR
 #### Installation
 
 ```
-npm install 
+yarn 
+```
+
+or
+
+```
+npm install
 ```
 
 #### Building 
