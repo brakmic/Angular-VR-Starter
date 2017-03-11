@@ -1,5 +1,5 @@
 {
-  "author": "vr-angular",
+  "author": "Harris Brakmic",
   "dependencies": {
     "@angular/common": "^2.4.9",
     "@angular/compiler": "^2.4.9",
@@ -151,7 +151,7 @@
   },
   "license": "MIT",
   "main": "index.js",
-  "name": "vrweb",
+  "name": "angular2-vr-starter",
   "private": true,
   "scripts": {
     "docker": "docker",
