@@ -45,6 +45,14 @@ The currently available VR modules are located in [app.loader.ts](https://github
 
 During the application start the [VrModuleService](https://github.com/brakmic/Angular2_VR_Starter/blob/master/src/app/services/vr-module/vr-module.service.ts#L40) registers all of the available modules by sending dispatch messages to @ngrx [AppStore](https://github.com/brakmic/Angular_VRDemo/blob/master/src/app/stores/app/app.store.ts). 
 
+
+#### FAQ
+
+**Q**: I'm getting `Uncaught TypeError: Cannot assign to read only property 'detachedCallback' of object '#'`!
+
+**A**: A-Frame must be imported **before** Angular's [Zone.js](https://github.com/angular/zone.js/). This is the reason why `import 'aframe'` is 
+located in [polyfills.browser.ts](https://github.com/brakmic/Angular2_VR_Starter/blob/master/src/init/polyfills.browser.ts#L4). 
+
 #### License 
 
 [MIT](https://github.com/brakmic/Angular_VRDemo/blob/master/LICENSE)
