@@ -1,7 +1,7 @@
 /**
  * @author: @brakmic
  */
-
+import 'aframe'; // MUST import A-Frame before zone.js!
 // Polyfills
 // ----------
 

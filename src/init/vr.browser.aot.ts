@@ -1,6 +1,6 @@
 // Vendor scripts go here
 // -----------------------
-require('aframe');
+
 // Themes
 import 'bootstrap-loader';
 import 'font-awesome-sass-loader';
