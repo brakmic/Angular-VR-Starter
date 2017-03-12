@@ -114,6 +114,6 @@ export class AppComponent implements OnInit,
   }
 
   private registerVrModules(modules: IVrModule[]) {
-    _.each(modules, mod => this.vrModuleService.next(mod));
+    _.each(modules, (mod) => this.vrModuleService.next(mod));
   }
 }

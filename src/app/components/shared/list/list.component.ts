@@ -70,7 +70,7 @@ export class VrListComponent implements OnInit,
    */
   private updateEventHandlers() {
     domready(() => {
-      this.hammerElements.forEach(m => m.off('tap press'));
+      this.hammerElements.forEach((m) => m.off('tap press'));
       this.hammerElements = [];
       this.modules.forEach(m => {
         const elem = document.getElementById(m.name);
@@ -79,7 +79,6 @@ export class VrListComponent implements OnInit,
           this.hammerElements.push(entry);
           entry.on('tap press', (ev) => {
             ev.preventDefault();
-            let name = ev.target.textContent;
             let item = ev.target;
             this.entryClicked({ sender: 'List',
                                     module: m,
