@@ -50,7 +50,7 @@ During the application start the [VrModuleService](https://github.com/brakmic/An
 
 **Q**: I'm getting `Uncaught TypeError: Cannot assign to read only property 'detachedCallback' of object '#'`!
 
-**A**: A-Frame must be imported **before** Angular's [Zone.js](https://github.com/angular/zone.js/). This is the reason why `import 'aframe'` is 
+**A**: A-Frame must be imported **before** Angular's [Zone.js](https://github.com/angular/zone.js/). This project's `import 'aframe'` is 
 located in [polyfills.browser.ts](https://github.com/brakmic/Angular2_VR_Starter/blob/master/src/init/polyfills.browser.ts#L4). 
 
 #### License 
