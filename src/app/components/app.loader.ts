@@ -8,7 +8,7 @@ import { VrModuleType } from 'app/enums';
 
 const panorama = <IVrModule>{
               id: '001',
-              name: 'panorama',
+              name: 'Panorama',
               type: VrModuleType.AFrame,
               markup: `
              <a-scene>
@@ -18,7 +18,7 @@ const panorama = <IVrModule>{
             };
 const curvedMockups = <IVrModule>{
     id: '002',
-    name: 'curved mockups',
+    name: 'Curved Mockups',
     type: VrModuleType.AFrame,
     markup: `
     <a-scene>
@@ -47,7 +47,7 @@ const curvedMockups = <IVrModule>{
 };
 const spheresAndFog = <IVrModule>{
     id: '003',
-    name: 'spheres and fog',
+    name: 'Spheres and Fog',
     type: VrModuleType.AFrame,
     markup: `
     <a-scene fog="type: linear; color: #AAB; far: 30; near: 0">
@@ -189,7 +189,7 @@ const spheresAndFog = <IVrModule>{
 
 const shopping = <IVrModule>{
     id: '004',
-    name: 'shopping',
+    name: 'Shopping',
     type: VrModuleType.AFrame,
     markup: `
         <a-scene>
@@ -261,82 +261,18 @@ const shopping = <IVrModule>{
 
 const dynamicLights = <IVrModule> {
         id: '005',
-        name: 'dynamic lights',
+        name: '360° Video',
         type: VrModuleType.AFrame,
         markup: `
           <a-scene>
                 <a-assets>
-                        <a-mixin id="light" geometry="primitive: sphere; radius: 1.5"
-                                material="color: #FFF; shader: flat"
-                                light="color: #DDDDFF; distance: 120; intensity: 2; type: point">
-                        </a-mixin>
-                        <a-mixin id="torus-knot" geometry="primitive: torusKnot"
-                                material="color: red"></a-mixin>
+                        <video id="video" src="https://ucarecdn.com/bcece0a8-86ce-460e-856b-40dac4875f15/"
+                        autoplay loop crossorigin></video>
                 </a-assets>
 
-                <!-- Camera. -->
-                <a-entity position="0 0 80" camera="fov: 45"
-                                look-controls wasd-controls></a-entity>
-
-                <!-- Skysphere. -->
-                <a-entity geometry="primitive: sphere; radius: 300"
-                                material="color: #111; shader: flat"
-                                scale="-1 -1 -1"></a-entity>
-
-                <!-- Lights. -->
-                <a-entity position="0 0 0">
-                        <a-animation attribute="rotation" to="0 0 360"
-                                repeat="indefinite" easing="linear" dur="4096">
-                        </a-animation>
-                        <a-entity mixin="light" position="30 0 0"></a-entity>
-                </a-entity>
-
-                <a-entity position="0 0 0">
-                        <a-animation attribute="rotation" to="360 0 0"
-                                repeat="indefinite" easing="linear" dur="4096">
-                        </a-animation>
-                        <a-entity mixin="light" position="0 0 40"></a-entity>
-                </a-entity>
-           </a-scene>
-        `,
-        scripts: [
-                `
-                var scene = document.querySelector('a-scene');
-                for (var i = 0; i < 120; i++) {
-                        var obj = document.createElement('a-entity');
-                        obj.setAttribute('geometry', {
-                        primitive: 'torusKnot',
-                        radius: Math.random() * 10,
-                        radiusTubular: Math.random() * .75,
-                        p: Math.round(Math.random() * 10),
-                        q: Math.round(Math.random() * 10)
-                        });
-                        obj.setAttribute('material', {
-                        color: getRandColor(),
-                        metalness: Math.random(),
-                        roughness: Math.random()
-                        });
-                        obj.setAttribute('position', {
-                        x: getRandCoord(),
-                        y: getRandCoord(),
-                        z: getRandCoord()
-                        });
-                        scene.appendChild(obj);
-                }
-                function getRandColor () {
-                        var letters = '0123456789ABCDEF'.split('');
-                        var color = '#';
-                        for (var i = 0; i < 6; i++) {
-                        color += letters[Math.floor(Math.random() * 16)];
-                        }
-                        return color;
-                }
-                function getRandCoord () {
-                        var coord = Math.random() * 60;
-                        return Math.random() < .5 ? coord + 5 : coord * -1 - 5;
-                }
-                `
-        ]
+                <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
+          </a-scene>
+        `
 };
 
 export const predefinedModules: IVrModule[] = [panorama, curvedMockups,
