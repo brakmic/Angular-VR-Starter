@@ -1,6 +1,6 @@
 ![image](http://imageup.info/upload/big/2016/07/14/57881762015e8.png)
 
-This is an [Angular 2](https://angular.io/)-based environment for building WebVR apps with Mozilla's [A-frame](https://aframe.io/).
+This is an [Angular 4](https://angular.io/)-based environment for building WebVR apps with Mozilla's [A-frame](https://aframe.io/).
 
 [Live Demo](http://brakmic.com/demos/vrdemo/)
 
