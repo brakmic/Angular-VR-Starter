@@ -197,7 +197,8 @@ module.exports = function(options) {
           {
             fallback: 'style-loader',
             use: 'css-loader!sass-loader?sourceMap'
-          })
+          }),
+        exclude: /node_modules/
       },
       {
         test: /\.woff(2)?(\?v=.+)?$/,
