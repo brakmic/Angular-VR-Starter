@@ -1,14 +1,14 @@
 {
   "author": "Harris Brakmic",
   "dependencies": {
-    "@angular/common": "^4.2.2",
-    "@angular/compiler": "^4.2.2",
-    "@angular/core": "^4.2.2",
-    "@angular/forms": "^4.2.2",
-    "@angular/http": "^4.2.2",
-    "@angular/platform-browser": "^4.2.2",
-    "@angular/platform-browser-dynamic": "^4.2.2",
-    "@angular/router": "^4.2.2",
+    "@angular/common": "^4.2.3",
+    "@angular/compiler": "^4.2.3",
+    "@angular/core": "^4.2.3",
+    "@angular/forms": "^4.2.3",
+    "@angular/http": "^4.2.3",
+    "@angular/platform-browser": "^4.2.3",
+    "@angular/platform-browser-dynamic": "^4.2.3",
+    "@angular/router": "^4.2.3",
     "@angularclass/conventions-loader": "^1.0.13",
     "@angularclass/hmr": "^1.2.2",
     "@angularclass/hmr-loader": "^3.0.2",
@@ -21,7 +21,7 @@
   },
   "description": "vrWeb",
   "devDependencies": {
-    "@angular/compiler-cli": "^4.2.2",
+    "@angular/compiler-cli": "^4.2.3",
     "@angularclass/request-idle-callback": "^1.0.7",
     "@angularclass/resolve-angular-routes": "^1.0.9",
     "@angularclass/webpack-toolkit": "^1.3.3",
@@ -36,13 +36,13 @@
     "@types/jquery": "latest",
     "@types/lodash": "^4.14.66",
     "@types/node": "^7.0.31",
-    "@types/ramda": "0.0.14",
+    "@types/ramda": "0.0.15",
     "@types/requirejs": "^2.1.29",
     "@types/selenium-webdriver": "^3.0.4",
     "@types/service_worker_api": "0.0.9",
     "@types/source-map": "^0.5.0",
     "@types/uglify-js": "^2.6.29",
-    "@types/webpack": "^2.2.15",
+    "@types/webpack": "^2.2.16",
     "@types/whatwg-fetch": "0.0.33",
     "add-asset-html-webpack-plugin": "^2.0.1",
     "andlog": "^1.0.0",
@@ -78,7 +78,7 @@
     "imports-loader": "^0.7.1",
     "ionicons": "^3.0.0",
     "istanbul-instrumenter-loader": "^2.0.0",
-    "jasmine-core": "^2.6.3",
+    "jasmine-core": "^2.6.4",
     "jquery": "^3.2.1",
     "jquery-once": "^2.2.0",
     "jquery-ui-bundle": "^1.12.1",
@@ -212,5 +212,5 @@
     "protractor": "protractor",
     "rimraf": "rimraf"
   },
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
